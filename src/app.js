@@ -69,18 +69,32 @@ function filterByAward(award) {
 
 //Progression 6 - Filter players that won ______ award ____ times
 
-
+function filterByAwardxTimes(awardName, noOfTimes) {
+  return players.filter(player => {
+    const playerAwards = player.awards.filter(award => award.name === awardName);
+    return playerAwards.length === noOfTimes;
+  });
+}
 
 //Progression 7 - Filter players that won ______ award and belong to ______ country
-
+function filterByAwardxCountry(awardName, country) {
+  return players.filter(player => {
+    const playerAwards = player.awards.map(a => a.name);
+    return playerAwards.includes(awardName) && player.country === country;
+  });
+}
 
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
 
-
+function filterByNoOfAwardsxTeamxAge(noOfAwards, team, age) {
+  return players.filter(player => player.awards.length >= noOfAwards && player.team === team && player.age < age);
+}
 
 //Progression 9 - Sort players in descending order of their age
-
+function sortByAge(){
+  return players.sort((a, b) => b.age - a.age);
+}
 
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
 
@@ -88,8 +102,6 @@ function filterByAward(award) {
 
 
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
-
-
 
 //Challenge 2 - Sort players that are older than _____ years in alphabetical order
 //Sort the awards won by them in reverse chronological order
