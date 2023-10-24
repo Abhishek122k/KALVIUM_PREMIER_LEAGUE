@@ -98,11 +98,24 @@ function sortByAge(){
 
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
 
-
+function filterByTeamxSortByNoOfAwards(team) {
+  let filteredPlayers = players.filter(player => player.team === team);
+  return filteredPlayers.sort((a, b) => b.awards.length - a.awards.length);
+}
 
 
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
+function filterByAwardxTimesxCountry(awardName, noOfTimes, country) {
+  return players.filter(player => player.awards.filter(award => award.name === awardName).length === noOfTimes && player.country === country)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 
 //Challenge 2 - Sort players that are older than _____ years in alphabetical order
 //Sort the awards won by them in reverse chronological order
 
+function sortByNamexOlderThan(age) {
+  let filteredPlayers = players.filter(player => player.age > age);
+
+  return filteredPlayers.sort((a, b) => a.name.localeCompare(b.name));
+}
